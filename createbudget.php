@@ -1,5 +1,5 @@
 <?php 
-class Budget{
+class CreateBudget{
     private $connection;
     public function __construct($conn){
     $this->connection=$conn;
@@ -8,7 +8,7 @@ class Budget{
         $sql ="INSERT INTO `housing`( `mortgage`, `hoa`, `rent`, `homeins`, `repair_main`, `watgasele`, `cabtvinternet`, `phonecell`) VALUES (:mortgage,:hoafees,:rent,:homeins,:repair,:watgas,:cabtv,:phonecel)";
         $stmt = $this->connection->prepare( $sql );
         if( $stmt ){
-          $pdoexec = $stmt->execute( array( ":mortgage" => $schoosupp, ":hoafees" =>$hoafees , ":rent" =>$rent,":homeins" => $homeins, ":repair" =>$repair, ":watgas" =>$watergas, ":cabtv" =>$cabletv, ":phonece" =>$phonecall) );
+          $pdoexec = $stmt->execute( array( ":mortgage" => $mortgage, ":hoafees" =>$hoafees , ":rent" =>$rent,":homeins" => $homeins, ":repair" =>$repair, ":watgas" =>$watergas, ":cabtv" =>$cabletv, ":phonecel" =>$phonecall) );
           if( $pdoexec ){
             $id = $this->connection->lastInsertId();
             return $id;
@@ -81,11 +81,11 @@ class Budget{
       }
     }
     
-    public function insertBudget($budget,$from,$to,$income,$other){
-      $sql ="INSERT INTO `budget`(`budg_name`, `budg_period_from`, `budg_period_to`, `income`, `other_income`) VALUES (:name,:from,:to,:income,:other)";
+    public function insertBudget($from,$income,$other,$eduid,$housid,$personid,$savid,$transid){
+      $sql ="INSERT INTO `budget`(`budg_period_from`, `income`, `other_income`,`edu_id`, `hous_id`, `person_id`, `sav_id`, `trans_id`) VALUES (:from,:income,:other,:eduid,:housid,:personid,:savid,:transid)";
       $stmt = $this->connection->prepare( $sql );
       if( $stmt ){
-        $pdoexec = $stmt->execute( array( ":name" => $user2, ":from" =>$pass2 , ":to" =>$to , ":income" =>$income, ":other" =>$other ) );
+        $pdoexec = $stmt->execute( array( ":from" =>$from  , ":income" =>$income, ":other" => $other, ":eduid" =>$eduid, ":housid" =>$housid, ":personid" =>$personid, ":savid" =>$savid, ":transid" =>$transid ) );
         if( $pdoexec ){
             $id = $this->connection->lastInsertId();
             return $id;
@@ -95,30 +95,6 @@ class Budget{
       } else {
           return "error";
       }
-    }
-    public function readallBudgets(){
-        $query = "SELECT";
-        $stmt = $this->connection->prepare($query);
-        $stmt->execute();
-        return $stmt;
-    }
-    public function readOneBudget(){
-        $query = "SELECT";
-        $stmt = $this->connection->prepare($query);
-        $stmt->execute();
-        return $stmt;
-    }
-    public function updateBudget(){
-        $query = "SELECT";
-        $stmt = $this->connection->prepare($query);
-        $stmt->execute();
-        return $stmt;
-    }
-    public function deleteBudget(){
-        $query = "SELECT";
-        $stmt = $this->connection->prepare($query);
-        $stmt->execute();
-        return $stmt;
     }
 }
 
