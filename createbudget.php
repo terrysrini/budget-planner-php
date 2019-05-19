@@ -96,6 +96,45 @@ class CreateBudget{
           return "error";
       }
     }
+    
+    public function getOneBudget($id){
+        $sql = "SELECT *,(j.school_supp+j.stud_loans+j.colleg_tution) as schooling,(h.mortgage+h.hoa+h.rent+h.homeins+h.repair_main+h.watgasele+ h.cabtvinternet+ h.phonecell) as housings,(p.groc_hous+p.clothing+p.entert+p.medical+p.pet_supp+p.other_exp) as personals, (s.emer_fund+s.investment+s.retirement) as savings,(t.car_pmt+t.car_insu+t.gas_fuel+t.car_repairs) as transport FROM `budget` b join education as j on b.edu_id=j.edu_id join housing as h on b.hous_id=h.house_id join personal as p on p.pers_id=b.person_id join savings as s on s.sav_id=b.sav_id join transportation as t on t.trans_id=b.trans_id where budg_id=$id";
+        $stmt = $this->connection->query( $sql )->fetchAll();
+       
+        if( !$stmt ){
+            return 'error';
+        }
+        else{
+            return $stmt;
+        }
+    }
+
+    public function getDateBudget($date){
+     
+        $sql = "SELECT *,(j.school_supp+j.stud_loans+j.colleg_tution) as schooling,(h.mortgage+h.hoa+h.rent+h.homeins+h.repair_main+h.watgasele+ h.cabtvinternet+ h.phonecell) as housings,(p.groc_hous+p.clothing+p.entert+p.medical+p.pet_supp+p.other_exp) as personals, (s.emer_fund+s.investment+s.retirement) as savings,(t.car_pmt+t.car_insu+t.gas_fuel+t.car_repairs) as transport FROM `budget` b join education as j on b.edu_id=j.edu_id join housing as h on b.hous_id=h.house_id join personal as p on p.pers_id=b.person_id join savings as s on s.sav_id=b.sav_id join transportation as t on t.trans_id=b.trans_id where budg_period_from LIKE '%".$date."%'";
+        $stmt = $this->connection->query( $sql )->fetchAll();
+        return $stmt;
+      
+    }
+    
+    public function deleteBudget($id){
+        $sql = "DELETE from `budget` where `budg_id`=:id";
+        $q = $this->connection->prepare($sql);
+        $response = $q->execute(array(":id" => $id));
+        return $response;                
+
+    }
+    public function getAllBudget(){
+        $sql = "SELECT b.budg_id,b.budg_period_from,b.income,b.other_income,(j.school_supp+j.stud_loans+j.colleg_tution) as schooling,(h.mortgage+h.hoa+h.rent+h.homeins+h.repair_main+h.watgasele+ h.cabtvinternet+ h.phonecell) as housings,(p.groc_hous+p.clothing+p.entert+p.medical+p.pet_supp+p.other_exp) as personals, (s.emer_fund+s.investment+s.retirement) as savings,(t.car_pmt+t.car_insu+t.gas_fuel+t.car_repairs) as transport FROM `budget` b join education as j on b.edu_id=j.edu_id join housing as h on b.hous_id=h.house_id join personal as p on p.pers_id=b.person_id join savings as s on s.sav_id=b.sav_id join transportation as t on t.trans_id=b.trans_id";
+        $stmt = $this->connection->query( $sql )->fetchAll();
+       
+        if( !$stmt ){
+            return 'error';
+        }
+        else{
+            return $stmt;
+        }
+    }
 }
 
 ?>
