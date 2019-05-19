@@ -51,5 +51,8 @@ if( isset($data->budget) && $data->budget == "updatebudget"){
     $lastid=$create->updateBudget($from,$monthinc,$otherinc,$idss);
     echo json_encode(array("data" => $lastid,"error"=>''));
 }
+else{
+    die("403 Forbidden");
+}
 
 ?>

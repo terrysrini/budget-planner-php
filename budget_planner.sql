@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2019 at 12:04 PM
--- Server version: 10.1.39-MariaDB
--- PHP Version: 7.1.29
+-- Generation Time: May 19, 2019 at 12:00 PM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 5.6.36
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -48,7 +48,8 @@ CREATE TABLE `budget` (
 --
 
 INSERT INTO `budget` (`budg_id`, `budg_period_from`, `budg_period_to`, `income`, `other_income`, `edu_id`, `hous_id`, `person_id`, `sav_id`, `trans_id`, `created_at`, `modified_at`) VALUES
-(8, '2019-05-15', NULL, 25000, 2500, 6, 2, 6, 8, 7, '2019-05-15 15:33:55', '2019-05-15 15:33:55');
+(13, '2019-05-19', NULL, 26002, 25200, 11, 7, 11, 13, 12, '2019-05-19 12:57:57', '2019-05-19 12:57:57'),
+(14, '2019-05-19', NULL, 30000, 2055220, 12, 8, 12, 14, 13, '2019-05-19 15:22:51', '2019-05-19 15:22:51');
 
 -- --------------------------------------------------------
 
@@ -61,8 +62,8 @@ CREATE TABLE `education` (
   `school_supp` float DEFAULT NULL,
   `stud_loans` float DEFAULT NULL,
   `colleg_tution` float DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `modified_at` datetime DEFAULT NULL
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `modified_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -70,12 +71,12 @@ CREATE TABLE `education` (
 --
 
 INSERT INTO `education` (`edu_id`, `school_supp`, `stud_loans`, `colleg_tution`, `created_at`, `modified_at`) VALUES
-(1, 22, 22, 2, NULL, NULL),
-(2, 22, 22, 2, NULL, NULL),
-(3, 22, 22, 2, NULL, NULL),
-(4, 22, 22, 2, NULL, NULL),
-(5, 22, 22, 2, NULL, NULL),
-(6, 22, 22, 2, NULL, NULL);
+(7, 10, 10, 10, NULL, NULL),
+(8, 100, 100, 100, '2019-05-18 09:49:45', '2019-05-18 09:49:45'),
+(9, 10, 10, 10, '2019-05-18 09:52:47', '2019-05-18 09:52:47'),
+(10, 100, 100, 100, '2019-05-19 12:49:29', '2019-05-19 12:49:29'),
+(11, 103, 100, 100, '2019-05-19 12:57:57', '2019-05-19 12:57:57'),
+(12, 55555, 55555, 55555, '2019-05-19 15:22:51', '2019-05-19 15:22:51');
 
 -- --------------------------------------------------------
 
@@ -102,8 +103,12 @@ CREATE TABLE `housing` (
 --
 
 INSERT INTO `housing` (`house_id`, `mortgage`, `hoa`, `rent`, `homeins`, `repair_main`, `watgasele`, `cabtvinternet`, `phonecell`, `created_at`, `modified_at`) VALUES
-(1, 11, 1, 1, 11, 1, 1, 1, 1, '2019-05-15 15:32:28', '2019-05-15 15:32:28'),
-(2, 11, 1, 1, 11, 1, 1, 1, 1, '2019-05-15 15:33:55', '2019-05-15 15:33:55');
+(3, 200, 200, 200, 200, 200, 200, 200, 200, '2019-05-18 09:45:37', '2019-05-18 09:45:37'),
+(4, 100, 100, 100, 100, 100, 100, 100, 100, '2019-05-18 09:49:45', '2019-05-18 09:49:45'),
+(5, 100, 100, 100, 100, 100, 100, 100, 100, '2019-05-18 09:52:47', '2019-05-18 09:52:47'),
+(6, 100, 100, 100, 100, 100, 100, 100, 100, '2019-05-19 12:49:29', '2019-05-19 12:49:29'),
+(7, 122, 100, 11, 100, 100, 101, 100, 100, '2019-05-19 12:57:57', '2019-05-19 12:57:57'),
+(8, 125, 222, 225, 558, 2555, 552, 552, 5225, '2019-05-19 15:22:51', '2019-05-19 15:22:51');
 
 -- --------------------------------------------------------
 
@@ -128,12 +133,12 @@ CREATE TABLE `personal` (
 --
 
 INSERT INTO `personal` (`pers_id`, `groc_hous`, `clothing`, `entert`, `medical`, `pet_supp`, `other_exp`, `create_at`, `modified_at`) VALUES
-(1, 2, 2, 2, 2, 22, 21, '2019-05-15 15:25:03', '2019-05-15 15:25:03'),
-(2, 2, 2, 2, 2, 22, 21, '2019-05-15 15:29:47', '2019-05-15 15:29:47'),
-(3, 2, 2, 2, 2, 22, 21, '2019-05-15 15:30:15', '2019-05-15 15:30:15'),
-(4, 2, 2, 2, 2, 22, 21, '2019-05-15 15:30:59', '2019-05-15 15:30:59'),
-(5, 2, 2, 2, 2, 22, 21, '2019-05-15 15:32:28', '2019-05-15 15:32:28'),
-(6, 2, 2, 2, 2, 22, 21, '2019-05-15 15:33:55', '2019-05-15 15:33:55');
+(7, 100, 10, 10, 10, 10, 10, '2019-05-18 09:45:37', '2019-05-18 09:45:37'),
+(8, 100, 100, 100, 100, 100, 100, '2019-05-18 09:49:44', '2019-05-18 09:49:44'),
+(9, 100, 10, 10, 10, 10, 10, '2019-05-18 09:52:47', '2019-05-18 09:52:47'),
+(10, 100, 100, 100, 100, 100, 100, '2019-05-19 12:49:29', '2019-05-19 12:49:29'),
+(11, 103, 10, 100, 100, 100, 100, '2019-05-19 12:57:57', '2019-05-19 12:57:57'),
+(12, 0, 0, 0, 0, 0, 0, '2019-05-19 15:22:51', '2019-05-19 15:22:51');
 
 -- --------------------------------------------------------
 
@@ -155,12 +160,12 @@ CREATE TABLE `savings` (
 --
 
 INSERT INTO `savings` (`sav_id`, `emer_fund`, `investment`, `retirement`, `created_at`, `modified_at`) VALUES
-(3, 2, 2, 2, '2019-05-15 15:25:03', '2019-05-15 15:25:03'),
-(4, 2, 2, 2, '2019-05-15 15:29:47', '2019-05-15 15:29:47'),
-(5, 2, 2, 2, '2019-05-15 15:30:15', '2019-05-15 15:30:15'),
-(6, 2, 2, 2, '2019-05-15 15:30:59', '2019-05-15 15:30:59'),
-(7, 2, 2, 2, '2019-05-15 15:32:28', '2019-05-15 15:32:28'),
-(8, 2, 2, 2, '2019-05-15 15:33:55', '2019-05-15 15:33:55');
+(9, 17, 10, 30, '2019-05-18 09:45:37', '2019-05-18 09:45:37'),
+(10, 100, 100, 100, '2019-05-18 09:49:44', '2019-05-18 09:49:44'),
+(11, 100, 100, 100, '2019-05-18 09:52:47', '2019-05-18 09:52:47'),
+(12, 100, 100, 100, '2019-05-19 12:49:29', '2019-05-19 12:49:29'),
+(13, 128, 100, 100, '2019-05-19 12:57:57', '2019-05-19 12:57:57'),
+(14, 0, 0, 0, '2019-05-19 15:22:51', '2019-05-19 15:22:51');
 
 -- --------------------------------------------------------
 
@@ -183,12 +188,12 @@ CREATE TABLE `transportation` (
 --
 
 INSERT INTO `transportation` (`trans_id`, `car_pmt`, `car_insu`, `gas_fuel`, `car_repairs`, `created_at`, `modified_at`) VALUES
-(2, 2, 2, 2, 2, '2019-05-15 15:25:03', '2019-05-15 15:25:03'),
-(3, 2, 2, 2, 2, '2019-05-15 15:29:47', '2019-05-15 15:29:47'),
-(4, 2, 2, 2, 2, '2019-05-15 15:30:15', '2019-05-15 15:30:15'),
-(5, 2, 2, 2, 2, '2019-05-15 15:30:59', '2019-05-15 15:30:59'),
-(6, 2, 2, 2, 2, '2019-05-15 15:32:28', '2019-05-15 15:32:28'),
-(7, 2, 2, 2, 2, '2019-05-15 15:33:55', '2019-05-15 15:33:55');
+(8, 100, 10, 10, 10, '2019-05-18 09:45:36', '2019-05-18 09:45:36'),
+(9, 132, 10, 10, 10, '2019-05-18 09:49:44', '2019-05-18 09:49:44'),
+(10, 172, 10, 10, 10, '2019-05-18 09:52:47', '2019-05-18 09:52:47'),
+(11, 100, 100, 100, 100, '2019-05-19 12:49:29', '2019-05-19 12:49:29'),
+(12, 127, 100, 100, 10, '2019-05-19 12:57:56', '2019-05-19 12:57:56'),
+(13, 6332, 11, 111, 1111, '2019-05-19 15:22:50', '2019-05-19 15:22:50');
 
 --
 -- Indexes for dumped tables
@@ -244,37 +249,37 @@ ALTER TABLE `transportation`
 -- AUTO_INCREMENT for table `budget`
 --
 ALTER TABLE `budget`
-  MODIFY `budg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `budg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `education`
 --
 ALTER TABLE `education`
-  MODIFY `edu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `edu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `housing`
 --
 ALTER TABLE `housing`
-  MODIFY `house_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `house_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `personal`
 --
 ALTER TABLE `personal`
-  MODIFY `pers_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `pers_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `savings`
 --
 ALTER TABLE `savings`
-  MODIFY `sav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `sav_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `transportation`
 --
 ALTER TABLE `transportation`
-  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -284,11 +289,11 @@ ALTER TABLE `transportation`
 -- Constraints for table `budget`
 --
 ALTER TABLE `budget`
-  ADD CONSTRAINT `budget_ibfk_1` FOREIGN KEY (`edu_id`) REFERENCES `education` (`edu_id`),
-  ADD CONSTRAINT `budget_ibfk_5` FOREIGN KEY (`sav_id`) REFERENCES `savings` (`sav_id`),
-  ADD CONSTRAINT `budget_ibfk_6` FOREIGN KEY (`trans_id`) REFERENCES `transportation` (`trans_id`),
-  ADD CONSTRAINT `budget_ibfk_7` FOREIGN KEY (`person_id`) REFERENCES `personal` (`pers_id`),
-  ADD CONSTRAINT `budget_ibfk_8` FOREIGN KEY (`hous_id`) REFERENCES `housing` (`house_id`);
+  ADD CONSTRAINT `budget_ibfk_1` FOREIGN KEY (`edu_id`) REFERENCES `education` (`edu_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `budget_ibfk_5` FOREIGN KEY (`sav_id`) REFERENCES `savings` (`sav_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `budget_ibfk_6` FOREIGN KEY (`trans_id`) REFERENCES `transportation` (`trans_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `budget_ibfk_7` FOREIGN KEY (`person_id`) REFERENCES `personal` (`pers_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `budget_ibfk_8` FOREIGN KEY (`hous_id`) REFERENCES `housing` (`house_id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

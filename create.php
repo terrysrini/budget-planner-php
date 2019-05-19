@@ -44,5 +44,8 @@ if( isset($data->budget) && $data->budget == "budget"){
     $lastid=$create->insertBudget($from,$monthinc,$otherinc,$eduid,$houseid,$personalid,$savingsid,$transportid);
     echo json_encode(array("data" => $lastid,"error"=>''));
 }
+else{
+    die("403 Forbidden");
+}
 
 ?>
